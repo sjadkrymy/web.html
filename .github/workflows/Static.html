@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محمد کریمی | فروش کاشی‌های سرامیکی</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#0A2463',secondary:'#D4AF37'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            direction: rtl;
+        }
+        .custom-shadow {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .testimonial-shadow {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #D4AF37 0%, #F5E7A3 50%, #D4AF37 100%);
+        }
+        .hero-slider {
+            height: 500px;
+        }
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .slide.active {
+            opacity: 1;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+        .gallery-item img {
+            transition: transform 0.3s ease;
+        }
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+        .blog-card {
+            transition: transform 0.3s ease;
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- نوار اطلاع‌رسانی -->
+    <div class="bg-primary text-white py-2 px-4 text-center text-sm">
+        <p>تخفیف ویژه ۲۰٪ برای خرید کاشی‌های طرح چوب تا پایان خرداد ۱۴۰۴ | ارسال رایگان برای خریدهای بالای ۵ میلیون تومان</p>
+    </div>
+
+    <!-- هدر و منو -->
+    <header class="bg-white shadow-md fixed top-8 left-0 right-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="font-['Pacifico'] text-2xl text-primary">logo</div>
+            
+            <div class="hidden md:flex items-center space-x-6 space-x-reverse">
+                <a href="#home" class="text-gray-700 hover:text-primary transition duration-300">خانه</a>
+                <a href="#about" class="text-gray-700 hover:text-primary transition duration-300">درباره ما</a>
+                <a href="#gallery" class="text-gray-700 hover:text-primary transition duration-300">گالری</a>
+                <a href="#services" class="text-gray-700 hover:text-primary transition duration-300">خدمات</a>
+                <a href="#blog" class="text-gray-700 hover:text-primary transition duration-300">وبلاگ</a>
+                <a href="#contact" class="text-gray-700 hover:text-primary transition duration-300">تماس با ما</a>
+            </div>
+            
+            <div class="flex items-center space-x-4 space-x-reverse">
+                <a href="https://wa.me/989912412534" class="bg-green-500 text-white px-3 py-2 rounded-button flex items-center hover:bg-green-600 transition duration-300">
+                    <div class="w-5 h-5 flex items-center justify-center">
+                        <i class="ri-whatsapp-line"></i>
+                    </div>
+                    <span class="mr-1 hidden md:inline">واتساپ</span>
+                </a>
+                <a href="tel:+989912412534" class="bg-primary text-white px-3 py-2 rounded-button flex items-center hover:bg-blue-800 transition duration-300">
+                    <div class="w-5 h-5 flex items-center justify-center">
+                        <i class="ri-phone-line"></i>
+                    </div>
+                    <span class="mr-1 hidden md:inline">تماس سریع</span>
+                </a>
+                <button id="menuToggle" class="md:hidden w-10 h-10 flex items-center justify-center">
+                    <i class="ri-menu-line text-2xl text-primary"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- منوی موبایل -->
+        <div id="mobileMenu" class="hidden bg-white shadow-lg absolute top-full left-0 right-0 p-4 md:hidden">
+            <div class="flex flex-col space-y-3">
+                <a href="#home" class="text-gray-700 hover:text-primary py-2 border-b border-gray-100">خانه</a>
+                <a href="#about" class="text-gray-700 hover:text-primary py-2 border-b border-gray-100">درباره ما</a>
+                <a href="#gallery" class="text-gray-700 hover:text-primary py-2 border-b border-gray-100">گالری</a>
+                <a href="#services" class="text-gray-700 hover:text-primary py-2 border-b border-gray-100">خدمات</a>
+                <a href="#blog" class="text-gray-700 hover:text-primary py-2 border-b border-gray-100">وبلاگ</a>
+                <a href="#contact" class="text-gray-700 hover:text-primary py-2">تماس با ما</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- بخش اصلی (Hero) -->
+    <section id="home" class="pt-24 relative hero-slider overflow-hidden">
+        <div class="slide active" style="background: url('https://readdy.ai/api/search-image?query=luxury%20ceramic%20tiles%20showroom%20with%20elegant%20display%20of%20marble%20pattern%20tiles%2C%20professional%20lighting%2C%20high-end%20interior%20design%2C%20showroom%20atmosphere%2C%20premium%20quality%20tiles%2C%20minimalist%20modern%20design%2C%20no%20people%2C%20commercial%20interior&width=1200&height=600&seq=1&orientation=landscape') center/cover no-repeat;">
+            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                <div class="text-center text-white px-4">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">به دنیای کاشی‌های لوکس خوش آمدید</h1>
+                    <p class="text-xl mb-8">با بیش از ۷ سال تجربه در ارائه بهترین کاشی‌های سرامیکی</p>
+                    <a href="#contact" class="bg-primary hover:bg-blue-800 text-white px-8 py-3 rounded-button text-lg transition duration-300 !rounded-button">مشاوره رایگان</a>
+                </div>
+            </div>
+        </div>
+        <div class="slide" style="background: url('https://readdy.ai/api/search-image?query=modern%20bathroom%20interior%20with%20luxury%20ceramic%20tiles%2C%20elegant%20design%2C%20marble%20pattern%20tiles%20on%20walls%20and%20floor%2C%20minimalist%20fixtures%2C%20ambient%20lighting%2C%20premium%20quality%20finish%2C%20no%20people&width=1200&height=600&seq=2&orientation=landscape') center/cover no-repeat;">
+            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                <div class="text-center text-white px-4">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">زیبایی و کیفیت در هر طرح</h1>
+                    <p class="text-xl mb-8">کاشی‌های متنوع برای فضاهای مختلف خانه و محل کار شما</p>
+                    <a href="#gallery" class="bg-primary hover:bg-blue-800 text-white px-8 py-3 rounded-button text-lg transition duration-300 !rounded-button">مشاهده گالری</a>
+                </div>
+            </div>
+        </div>
+        <div class="slide" style="background: url('https://readdy.ai/api/search-image?query=luxury%20kitchen%20with%20premium%20ceramic%20tile%20backsplash%2C%20elegant%20countertops%2C%20modern%20appliances%2C%20ambient%20lighting%2C%20high-end%20interior%20design%2C%20marble%20pattern%20tiles%2C%20no%20people&width=1200&height=600&seq=3&orientation=landscape') center/cover no-repeat;">
+            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                <div class="text-center text-white px-4">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">مشاوره تخصصی انتخاب کاشی</h1>
+                    <p class="text-xl mb-8">با ما تماس بگیرید تا بهترین انتخاب را برای شما داشته باشیم</p>
+                    <a href="tel:+989912412534" class="bg-primary hover:bg-blue-800 text-white px-8 py-3 rounded-button text-lg transition duration-300 !rounded-button">تماس مستقیم</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- دکمه‌های اسلایدر -->
+        <div class="absolute bottom-5 left-0 right-0 flex justify-center space-x-2 space-x-reverse">
+            <button class="w-3 h-3 rounded-full bg-white bg-opacity-50 slider-dot active" data-index="0"></button>
+            <button class="w-3 h-3 rounded-full bg-white bg-opacity-50 slider-dot" data-index="1"></button>
+            <button class="w-3 h-3 rounded-full bg-white bg-opacity-50 slider-dot" data-index="2"></button>
+        </div>
+    </section>
+
+    <!-- بخش ویژگی‌ها -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center animate-on-scroll">
+                    <div class="w-16 h-16 mx-auto bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                        <div class="w-8 h-8 flex items-center justify-center text-primary">
+                            <i class="ri-medal-line text-2xl"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">کیفیت برتر</h3>
+                    <p class="text-gray-600">ارائه کاشی‌های با کیفیت و درجه یک از برندهای معتبر داخلی و خارجی</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md text-center animate-on-scroll" data-delay="200">
+                    <div class="w-16 h-16 mx-auto bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                        <div class="w-8 h-8 flex items-center justify-center text-primary">
+                            <i class="ri-truck-line text-2xl"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">ارسال سریع</h3>
+                    <p class="text-gray-600">ارسال به تمام نقاط کشور با بسته‌بندی استاندارد و حمل ایمن</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md text-center animate-on-scroll" data-delay="400">
+                    <div class="w-16 h-16 mx-auto bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                        <div class="w-8 h-8 flex items-center justify-center text-primary">
+                            <i class="ri-customer-service-2-line text-2xl"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">مشاوره تخصصی</h3>
+                    <p class="text-gray-600">ارائه مشاوره رایگان برای انتخاب بهترین کاشی متناسب با فضای شما</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش درباره ما -->
+    <section id="about" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 animate-on-scroll">
+                    <img src="https://readdy.ai/api/search-image?query=professional%20middle%20eastern%20male%20tile%20salesman%20in%20formal%20attire%2C%20standing%20in%20a%20modern%20ceramic%20tile%20showroom%2C%20confident%20pose%2C%20friendly%20smile%2C%20high%20quality%20portrait%2C%20studio%20lighting%2C%20professional%20business%20portrait&width=600&height=600&seq=4&orientation=squarish" alt="محمد کریمی" class="rounded-lg shadow-lg mx-auto" style="max-width: 400px;">
+                </div>
+                
+                <div class="md:w-1/2 md:pr-8 animate-on-scroll" data-delay="200">
+                    <h2 class="text-3xl font-bold mb-6 text-primary">درباره محمد کریمی</h2>
+                    <p class="text-gray-700 mb-4 leading-relaxed">با بیش از ۷ سال تجربه در زمینه فروش کاشی‌های سرامیکی، افتخار دارم که به مشتریان عزیز خدمات با کیفیت و مشاوره تخصصی ارائه دهم. هدف من ارائه بهترین محصولات با قیمت مناسب و جلب رضایت مشتریان است.</p>
+                    
+                    <p class="text-gray-700 mb-6 leading-relaxed">تخصص من در انتخاب کاشی‌های مناسب برای فضاهای مختلف منزل و محل کار شماست. با شناخت دقیق از برندهای مختلف و کیفیت محصولات، می‌توانم بهترین پیشنهادها را متناسب با نیاز و بودجه شما ارائه دهم.</p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="text-primary font-bold text-2xl">+۷</div>
+                            <div class="text-gray-600">سال تجربه</div>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="text-primary font-bold text-2xl">+۱۰۰۰</div>
+                            <div class="text-gray-600">مشتری راضی</div>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="inline-block bg-primary text-white px-6 py-3 rounded-button hover:bg-blue-800 transition duration-300 !rounded-button">تماس با من</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش گالری -->
+    <section id="gallery" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 animate-on-scroll">
+                <h2 class="text-3xl font-bold text-primary mb-4">گالری محصولات</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">مجموعه‌ای از بهترین و با کیفیت‌ترین کاشی‌های سرامیکی برای فضاهای مختلف</p>
+            </div>
+            
+            <div class="mb-8 flex justify-center animate-on-scroll" data-delay="200">
+                <div class="inline-flex bg-white p-1 rounded-full shadow-sm">
+                    <button class="gallery-filter px-4 py-2 rounded-full bg-primary text-white" data-filter="all">همه</button>
+                    <button class="gallery-filter px-4 py-2 rounded-full text-gray-700 hover:bg-gray-100" data-filter="kitchen">آشپزخانه</button>
+                    <button class="gallery-filter px-4 py-2 rounded-full text-gray-700 hover:bg-gray-100" data-filter="bathroom">سرویس بهداشتی</button>
+                    <button class="gallery-filter px-4 py-2 rounded-full text-gray-700 hover:bg-gray-100" data-filter="living">پذیرایی</button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-on-scroll" data-delay="400">
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md cursor-pointer" data-category="kitchen">
+                    <img src="https://readdy.ai/api/search-image?query=modern%20kitchen%20with%20elegant%20ceramic%20tile%20backsplash%2C%20marble%20pattern%2C%20contemporary%20design%2C%20bright%20and%20clean%2C%20premium%20quality%20tiles%2C%20high-end%20kitchen%20interior&width=600&height=400&seq=5&orientation=landscape" alt="کاشی آشپزخانه" class="w-full h-64 object-cover">
+                    <div class="p-4 bg-white">
+                        <h3 class="font-semibold text-lg mb-1">کاشی دیواری آشپزخانه طرح مرمر</h3>
+                        <p class="text-gray-600 text-sm">مناسب برای دیوار آشپزخانه با طراحی مدرن</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md cursor-pointer" data-category="bathroom">
+                    <img src="https://readdy.ai/api/search-image?query=luxury%20bathroom%20with%20premium%20ceramic%20tiles%2C%20marble%20pattern%20on%20walls%20and%20floor%2C%20elegant%20fixtures%2C%20ambient%20lighting%2C%20modern%20design%2C%20spa-like%20atmosphere&width=600&height=400&seq=6&orientation=landscape" alt="کاشی سرویس بهداشتی" class="w-full h-64 object-cover">
+                    <div class="p-4 bg-white">
+                        <h3 class="font-semibold text-lg mb-1">کاشی کف و دیوار حمام طرح لوکس</h3>
+                        <p class="text-gray-600 text-sm">مقاوم در برابر رطوبت با ظاهری شیک و لوکس</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md cursor-pointer" data-category="living">
+                    <img src="https://readdy.ai/api/search-image?query=elegant%20living%20room%20with%20large%20format%20floor%20tiles%2C%20marble%20pattern%2C%20modern%20furniture%2C%20bright%20interior%2C%20premium%20quality%20ceramic%20tiles%2C%20luxury%20home%20design&width=600&height=400&seq=7&orientation=landscape" alt="کاشی پذیرایی" class="w-full h-64 object-cover">
+                    <div class="p-4 bg-white">
+                        <h3 class="font-semibold text-lg mb-1">کاشی کف پذیرایی طرح سنگ</h3>
+                        <p class="text-gray-600 text-sm">با دوام و مقاوم در برابر خش و سایش</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md cursor-pointer" data-category="kitchen">
+                    <img src="https://readdy.ai/api/search-image?query=modern%20kitchen%20with%20wood%20pattern%20ceramic%20tiles%2C%20warm%20tones%2C%20contemporary%20design%2C%20elegant%20cabinetry%2C%20premium%20quality%20tiles%2C%20high-end%20kitchen%20interior&width=600&height=400&seq=8&orientation=landscape" alt="کاشی آشپزخانه طرح چوب" class="w-full h-64 object-cover">
+                    <div class="p-4 bg-white">
+                        <h3 class="font-semibold text-lg mb-1">کاشی دیواری طرح چوب</h3>
+                        <p class="text-gray-600 text-sm">ترکیبی از زیبایی چوب و مقاومت سرامیک</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md cursor-pointer" data-category="bathroom">
+                    <img src="https://readdy.ai/api/search-image?query=modern%20bathroom%20with%20blue%20ceramic%20tiles%2C%20geometric%20pattern%2C%20contemporary%20design%2C%20clean%20lines%2C%20premium%20quality%20tiles%2C%20stylish%20bathroom%20interior&width=600&height=400&seq=9&orientation=landscape" alt="کاشی سرویس بهداشتی طرح هندسی" class="w-full h-64 object-cover">
+                    <div class="p-4 bg-white">
+                        <h3 class="font-semibold text-lg mb-1">کاشی طرح هندسی آبی</h3>
+                        <p class="text-gray-600 text-sm">طراحی مدرن با الگوهای هندسی برای فضای حمام</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md cursor-pointer" data-category="living">
+                    <img src="https://readdy.ai/api/search-image?query=modern%20living%20room%20with%20large%20format%20porcelain%20tiles%2C%20concrete%20effect%2C%20minimalist%20furniture%2C%20contemporary%20design%2C%20premium%20quality%20tiles%2C%20luxury%20home%20interior&width=600&height=400&seq=10&orientation=landscape" alt="کاشی پذیرایی طرح بتن" class="w-full h-64 object-cover">
+                    <div class="p-4 bg-white">
+                        <h3 class="font-semibold text-lg mb-1">کاشی کف طرح بتن</h3>
+                        <p class="text-gray-600 text-sm">مناسب برای سبک مینیمال و صنعتی</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10 animate-on-scroll" data-delay="600">
+                <a href="#contact" class="inline-block bg-primary text-white px-6 py-3 rounded-button hover:bg-blue-800 transition duration-300 !rounded-button">درخواست کاتالوگ کامل</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش خدمات -->
+    <section id="services" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 animate-on-scroll">
+                <h2 class="text-3xl font-bold text-primary mb-4">خدمات ما</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">ارائه خدمات متنوع در زمینه فروش و مشاوره کاشی‌های سرامیکی</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="service-card bg-white p-6 rounded-lg shadow-md animate-on-scroll" data-delay="200">
+                    <div class="w-14 h-14 mb-4 bg-primary bg-opacity-10 rounded-full flex items-center justify-center">
+                        <div class="w-8 h-8 flex items-center justify-center text-primary">
+                            <i class="ri-store-3-line text-2xl"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">فروش انواع کاشی</h3>
+                    <p class="text-gray-600 mb-4">ارائه انواع کاشی‌های سرامیکی برای کف و دیوار با طرح‌های متنوع و کیفیت بالا</p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center text-primary ml-2">
+                                <i class="ri-check-line"></i>
+                            </div>
+                            کاشی‌های دیواری و کف
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center text-primary ml-2">
+                                <i class="ri-check-line"></i>
+                            </div>
+                            سرامیک پرسلان
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center text-primary ml-2">
+                                <i class="ri-check-line"></i>
+                            </div>
+                            موزاییک و دکوراتیو
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="service-card bg-white p-6 rounded-lg shadow-md animate-on-scroll" data-delay="400">
+                    <div class="w-14 h-14 mb-4 bg-primary bg-opacity-10 rounded-full flex items-center justify-center">
+                        <div class="w-8 h-8 flex items-center justify-center text-primary">
+                            <i class="ri-chat-1-line text-2xl"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">مشاوره تخصصی</h3>
+                    <p class="text-gray-600 mb-4">ارائه مشاوره تخصصی برای انتخاب بهترین کاشی متناسب با فضا و سلیقه شما</p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center text-primary ml-2">
+                                <i class="ri-check-line"></i>
+                            </div>
+                            انتخاب طرح و رنگ مناسب
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center text-primary ml-2">
+                                <i class="ri-check-line"></i>
+                            </div>
+                            محاسبه متراژ مورد نیاز
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center text-primary ml-2">
+                                <i class="ri-check-line"></i>
+                            </div>
+                            پیشنهاد متناسب با بودجه
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="service-card bg-white p-6 rounded-lg shadow-md animate-on-scroll" data-delay="600">
+                    <div class="w-14 h-14 mb-4 bg-primary bg-opacity-10 rounded-full flex items-center justify-center">
+                        <div class="w-8 h-8 flex items-center justify-center text-primary">
+                            <i class="ri-truck-line text-2xl"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">ارسال به سراسر کشور</h3>
+                    <p class="text-gray-600 mb-4">ارسال محصولات به تمام نقاط کشور با بسته‌بندی استاندارد و حمل ایمن</p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center text-primary ml-2">
+                                <i class="ri-check-line"></i>
+                            </div>
+                            بسته‌بندی اصولی و ایمن
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center text-primary ml-2">
+                                <i class="ri-check-line"></i>
+                            </div>
+                            ارسال با باربری معتبر
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center text-primary ml-2">
+                                <i class="ri-check-line"></i>
+                            </div>
+                            پیگیری مرسوله تا تحویل
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-16 bg-gray-50 p-8 rounded-lg shadow-sm animate-on-scroll" data-delay="800">
+                <h3 class="text-2xl font-semibold mb-6 text-primary text-center">مناطق تحت پوشش ارسال</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-white p-4 rounded-lg shadow-sm text-center">
+                        <div class="w-10 h-10 mx-auto flex items-center justify-center text-primary mb-2">
+                            <i class="ri-map-pin-line text-xl"></i>
+                        </div>
+                        <p class="font-medium">استان یزد</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm text-center">
+                        <div class="w-10 h-10 mx-auto flex items-center justify-center text-primary mb-2">
+                            <i class="ri-map-pin-line text-xl"></i>
+                        </div>
+                        <p class="font-medium">استان اصفهان</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm text-center">
+                        <div class="w-10 h-10 mx-auto flex items-center justify-center text-primary mb-2">
+                            <i class="ri-map-pin-line text-xl"></i>
+                        </div>
+                        <p class="font-medium">استان تهران</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm text-center">
+                        <div class="w-10 h-10 mx-auto flex items-center justify-center text-primary mb-2">
+                            <i class="ri-map-pin-line text-xl"></i>
+                        </div>
+                        <p class="font-medium">سایر استان‌ها</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش نظرات مشتریان -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 animate-on-scroll">
+                <h2 class="text-3xl font-bold text-primary mb-4">نظرات مشتریان</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">آنچه مشتریان ما درباره خدمات و محصولات ما می‌گویند</p>
+            </div>
+            
+            <div class="relative testimonial-slider animate-on-scroll" data-delay="200">
+                <div class="overflow-hidden">
+                    <div class="testimonial-track flex transition-transform duration-500" style="transform: translateX(0);">
+                        <div class="testimonial-item min-w-full md:min-w-[33.333%] px-4">
+                            <div class="bg-white p-6 rounded-lg testimonial-shadow">
+                                <div class="flex items-center mb-4">
+                                    <img src="https://readdy.ai/api/search-image?query=professional%20middle%20eastern%20man%20in%20business%20casual%20attire%2C%20confident%20pose%2C%20neutral%20background%2C%20high%20quality%20portrait%2C%20studio%20lighting&width=100&height=100&seq=11&orientation=squarish" alt="رضا محمدی" class="w-12 h-12 rounded-full object-cover">
+                                    <div class="mr-3">
+                                        <h4 class="font-semibold">رضا محمدی</h4>
+                                        <div class="flex text-yellow-400 text-sm">
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600">"از مشاوره تخصصی آقای کریمی بسیار راضی هستم. ایشان با صبر و حوصله به تمام سوالات من پاسخ دادند و بهترین کاشی را برای آشپزخانه من پیشنهاد دادند. کیفیت محصول عالی بود و قیمت هم مناسب."</p>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-item min-w-full md:min-w-[33.333%] px-4">
+                            <div class="bg-white p-6 rounded-lg testimonial-shadow">
+                                <div class="flex items-center mb-4">
+                                    <img src="https://readdy.ai/api/search-image?query=professional%20middle%20eastern%20woman%20in%20business%20attire%2C%20confident%20pose%2C%20neutral%20background%2C%20high%20quality%20portrait%2C%20studio%20lighting&width=100&height=100&seq=12&orientation=squarish" alt="سارا احمدی" class="w-12 h-12 rounded-full object-cover">
+                                    <div class="mr-3">
+                                        <h4 class="font-semibold">سارا احمدی</h4>
+                                        <div class="flex text-yellow-400 text-sm">
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-half-fill"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600">"برای بازسازی حمام منزل به دنبال کاشی با کیفیت بودم که با آقای کریمی آشنا شدم. ایشان کاشی‌های متنوعی را به من نشان دادند و در نهایت انتخاب بسیار خوبی داشتم. از نحوه برخورد و خدمات پس از فروش ایشان بسیار راضی هستم."</p>
+                            </div>
+                        </div>
+                        
+                        <div class="testimonial-item min-w-full md:min-w-[33.333%] px-4">
+                            <div class="bg-white p-6 rounded-lg testimonial-shadow">
+                                <div class="flex items-center mb-4">
+                                    <img src="https://readdy.ai/api/search-image?query=professional%20middle%20eastern%20man%20in%20formal%20business%20attire%2C%20confident%20pose%2C%20neutral%20background%2C%20high%20quality%20portrait%2C%20studio%20lighting&width=100&height=100&seq=13&orientation=squarish" alt="علی رضایی" class="w-12 h-12 rounded-full object-cover">
+                                    <div class="mr-3">
+                                        <h4 class="font-semibold">علی رضایی</h4>
+                                        <div class="flex text-yellow-400 text-sm">
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600">"برای پروژه ساختمانی خود به حجم زیادی کاشی نیاز داشتم. آقای کریمی با ارائه قیمت مناسب و کیفیت عالی، همکاری بسیار خوبی با ما داشتند. ارسال به موقع و بسته‌بندی مناسب از نکات مثبت همکاری با ایشان بود."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="absolute top-1/2 right-2 transform -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center text-primary hover:bg-gray-100 focus:outline-none testimonial-prev">
+                    <i class="ri-arrow-right-s-line text-xl"></i>
+                </button>
+                
+                <button class="absolute top-1/2 left-2 transform -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center text-primary hover:bg-gray-100 focus:outline-none testimonial-next">
+                    <i class="ri-arrow-left-s-line text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش وبلاگ -->
+    <section id="blog" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 animate-on-scroll">
+                <h2 class="text-3xl font-bold text-primary mb-4">وبلاگ</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">آخرین مقالات و راهنماهای ما درباره کاشی و سرامیک</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="blog-card bg-white rounded-lg shadow-md overflow-hidden animate-on-scroll" data-delay="200">
+                    <img src="https://readdy.ai/api/search-image?query=person%20selecting%20ceramic%20tiles%20in%20a%20modern%20showroom%2C%20examining%20tile%20samples%2C%20professional%20lighting%2C%20high-quality%20tiles%20display%2C%20customer%20experience&width=600&height=400&seq=14&orientation=landscape" alt="راهنمای انتخاب کاشی" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <div class="w-4 h-4 flex items-center justify-center ml-1">
+                                <i class="ri-calendar-line"></i>
+                            </div>
+                            <span>۵ خرداد ۱۴۰۴</span>
+                            <span class="mx-2">|</span>
+                            <div class="w-4 h-4 flex items-center justify-center ml-1">
+                                <i class="ri-price-tag-3-line"></i>
+                            </div>
+                            <span>راهنمای خرید</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">راهنمای جامع انتخاب کاشی مناسب برای هر فضا</h3>
+                        <p class="text-gray-600 mb-4">در این مقاله به شما کمک می‌کنیم تا بهترین کاشی را متناسب با فضای مورد نظر خود انتخاب کنید و با انواع کاشی‌ها و ویژگی‌های آن‌ها آشنا شوید.</p>
+                        <a href="#" class="text-primary font-medium hover:text-blue-800 transition duration-300 flex items-center">
+                            ادامه مطلب
+                            <div class="w-5 h-5 flex items-center justify-center mr-1">
+                                <i class="ri-arrow-left-line"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="blog-card bg-white rounded-lg shadow-md overflow-hidden animate-on-scroll" data-delay="400">
+                    <img src="https://readdy.ai/api/search-image?query=person%20cleaning%20ceramic%20tiles%20in%20a%20modern%20bathroom%2C%20maintenance%20of%20tiles%2C%20cleaning%20supplies%2C%20bright%20and%20clean%20bathroom%20interior&width=600&height=400&seq=15&orientation=landscape" alt="نگهداری از کاشی" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <div class="w-4 h-4 flex items-center justify-center ml-1">
+                                <i class="ri-calendar-line"></i>
+                            </div>
+                            <span>۲۰ اردیبهشت ۱۴۰۴</span>
+                            <span class="mx-2">|</span>
+                            <div class="w-4 h-4 flex items-center justify-center ml-1">
+                                <i class="ri-price-tag-3-line"></i>
+                            </div>
+                            <span>نگهداری</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">روش‌های صحیح نگهداری و تمیز کردن کاشی‌های سرامیکی</h3>
+                        <p class="text-gray-600 mb-4">با روش‌های اصولی نگهداری از کاشی‌های سرامیکی آشنا شوید تا طول عمر و زیبایی آن‌ها را افزایش دهید و همیشه کاشی‌های درخشانی داشته باشید.</p>
+                        <a href="#" class="text-primary font-medium hover:text-blue-800 transition duration-300 flex items-center">
+                            ادامه مطلب
+                            <div class="w-5 h-5 flex items-center justify-center mr-1">
+                                <i class="ri-arrow-left-line"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="blog-card bg-white rounded-lg shadow-md overflow-hidden animate-on-scroll" data-delay="600">
+                    <img src="https://readdy.ai/api/search-image?query=modern%20interior%20design%20trends%2C%20ceramic%20tile%20patterns%20in%20contemporary%20home%2C%20stylish%20living%20space%2C%20premium%20quality%20tiles%2C%20design%20inspiration&width=600&height=400&seq=16&orientation=landscape" alt="ترندهای طراحی" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <div class="w-4 h-4 flex items-center justify-center ml-1">
+                                <i class="ri-calendar-line"></i>
+                            </div>
+                            <span>۱۰ اردیبهشت ۱۴۰۴</span>
+                            <span class="mx-2">|</span>
+                            <div class="w-4 h-4 flex items-center justify-center ml-1">
+                                <i class="ri-price-tag-3-line"></i>
+                            </div>
+                            <span>طراحی داخلی</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">ترندهای جدید طراحی داخلی با کاشی‌های سرامیکی در سال ۱۴۰۴</h3>
+                        <p class="text-gray-600 mb-4">با آخرین ترندهای طراحی داخلی با استفاده از کاشی‌های سرامیکی آشنا شوید و فضای منزل خود را مطابق با مدرن‌ترین سبک‌ها طراحی کنید.</p>
+                        <a href="#" class="text-primary font-medium hover:text-blue-800 transition duration-300 flex items-center">
+                            ادامه مطلب
+                            <div class="w-5 h-5 flex items-center justify-center mr-1">
+                                <i class="ri-arrow-left-line"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10 animate-on-scroll" data-delay="800">
+                <a href="#" class="inline-block bg-white border border-primary text-primary px-6 py-3 rounded-button hover:bg-primary hover:text-white transition duration-300 !rounded-button">مشاهده همه مقالات</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش تماس با ما -->
+    <section id="contact" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 animate-on-scroll">
+                <h2 class="text-3xl font-bold text-primary mb-4">تماس با ما</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">برای مشاوره رایگان و سفارش محصولات با ما در تماس باشید</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="lg:w-1/2 p-8 animate-on-scroll" data-delay="200">
+                    <h3 class="text-2xl font-semibold mb-6">فرم تماس</h3>
+                    <form id="contactForm">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 mb-2">نام و نام خانوادگی</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 mb-2">ایمیل</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="phone" class="block text-gray-700 mb-2">شماره تماس</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 mb-2">پیام</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-primary text-white py-3 rounded-button hover:bg-blue-800 transition duration-300 !rounded-button">ارسال پیام</button>
+                    </form>
+                </div>
+                
+                <div class="lg:w-1/2 bg-gray-100 p-8 animate-on-scroll" data-delay="400">
+                    <h3 class="text-2xl font-semibold mb-6">اطلاعات تماس</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 rounded-full text-primary ml-4">
+                                <i class="ri-map-pin-line text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">آدرس:</h4>
+                                <p class="text-gray-600">یزد، اردکان، میدان امام علی، مهمانسرا صحابه، کوچه پنجم، سمت چپ</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 rounded-full text-primary ml-4">
+                                <i class="ri-phone-line text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">تلفن تماس:</h4>
+                                <p class="text-gray-600 hover:text-primary transition duration-300">
+                                    <a href="tel:+989912412534">۰۹۹۱۲۴۱۲۵۳۴</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 rounded-full text-primary ml-4">
+                                <i class="ri-mail-line text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">ایمیل:</h4>
+                                <p class="text-gray-600 hover:text-primary transition duration-300">
+                                    <a href="mailto:ekantbaziha@gmail.com">ekantbaziha@gmail.com</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 rounded-full text-primary ml-4">
+                                <i class="ri-time-line text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">ساعات کاری:</h4>
+                                <p class="text-gray-600">شنبه تا پنجشنبه: ۸ صبح تا ۸ شب</p>
+                                <p class="text-gray-600">جمعه: ۹ صبح تا ۱ بعدازظهر</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-semibold mb-4">ما را در شبکه‌های اجتماعی دنبال کنید:</h4>
+                        <div class="flex space-x-4 space-x-reverse">
+                            <a href="#" class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition duration-300">
+                                <i class="ri-instagram-line text-xl"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition duration-300">
+                                <i class="ri-telegram-line text-xl"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition duration-300">
+                                <i class="ri-whatsapp-line text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 rounded-lg overflow-hidden shadow-md h-80 animate-on-scroll" data-delay="600">
+                <div class="w-full h-full" style="background: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png') center/cover no-repeat;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- دکمه اسکرول به بالا -->
+    <button id="scrollToTop" class="fixed bottom-6 left-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 z-50">
+        <i class="ri-arrow-up-line text-xl"></i>
+    </button>
+
+    <!-- فوتر -->
+    <footer class="bg-primary text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="font-['Pacifico'] text-2xl text-white mb-4">logo</div>
+                    <p class="text-gray-300 mb-6">با بیش از ۷ سال تجربه در زمینه فروش کاشی‌های سرامیکی، ارائه دهنده بهترین محصولات با قیمت مناسب و کیفیت عالی.</p>
+                    <div class="flex space-x-4 space-x-reverse">
+                        <a href="#" class="w-9 h-9 bg-white bg-opacity-10 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-primary transition duration-300">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 bg-white bg-opacity-10 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-primary transition duration-300">
+                            <i class="ri-telegram-line"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 bg-white bg-opacity-10 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-primary transition duration-300">
+                            <i class="ri-whatsapp-line"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">دسترسی سریع</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-300 hover:text-white transition duration-300">صفحه اصلی</a></li>
+                        <li><a href="#about" class="text-gray-300 hover:text-white transition duration-300">درباره ما</a></li>
+                        <li><a href="#gallery" class="text-gray-300 hover:text-white transition duration-300">گالری محصولات</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-white transition duration-300">خدمات</a></li>
+                        <li><a href="#blog" class="text-gray-300 hover:text-white transition duration-300">وبلاگ</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-white transition duration-300">تماس با ما</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">محصولات</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">کاشی دیواری</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">کاشی کف</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">سرامیک پرسلان</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">موزاییک</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">کاشی طرح چوب</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">کاشی طرح سنگ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">خبرنامه</h3>
+                    <p class="text-gray-300 mb-4">برای اطلاع از آخرین محصولات و تخفیف‌های ویژه در خبرنامه ما عضو شوید.</p>
+                    <form class="mb-4">
+                        <div class="flex">
+                            <input type="email" placeholder="ایمیل خود را وارد کنید" class="px-4 py-2 w-full rounded-r-button text-gray-800 focus:outline-none" required>
+                            <button type="submit" class="bg-secondary text-white px-4 py-2 rounded-l-button hover:bg-yellow-600 transition duration-300">عضویت</button>
+                        </div>
+                    </form>
+                    <p class="text-gray-300 text-sm">با عضویت در خبرنامه، شما <a href="#" class="text-white underline">قوانین حریم خصوصی</a> ما را می‌پذیرید.</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-blue-800 pt-6 mt-6 text-center text-gray-300 text-sm">
+                <p>© ۱۴۰۴ تمامی حقوق برای محمد کریمی محفوظ است.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal نتیجه ارسال فرم -->
+    <div id="formResultModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+            <div id="successMessage" class="hidden">
+                <div class="w-16 h-16 mx-auto bg-green-100 rounded-full flex items-center justify-center mb-4">
+                    <div class="w-8 h-8 flex items-center justify-center text-green-500">
+                        <i class="ri-check-line text-2xl"></i>
+                    </div>
+                </div>
+                <h3 class="text-xl font-semibold text-center mb-2">پیام شما با موفقیت ارسال شد</h3>
+                <p class="text-gray-600 text-center mb-6">در اسرع وقت با شما تماس خواهیم گرفت.</p>
+            </div>
+            
+            <div id="errorMessage" class="hidden">
+                <div class="w-16 h-16 mx-auto bg-red-100 rounded-full flex items-center justify-center mb-4">
+                    <div class="w-8 h-8 flex items-center justify-center text-red-500">
+                        <i class="ri-close-line text-2xl"></i>
+                    </div>
+                </div>
+                <h3 class="text-xl font-semibold text-center mb-2">خطا در ارسال پیام</h3>
+                <p class="text-gray-600 text-center mb-6">لطفاً دوباره تلاش کنید یا از طریق تماس تلفنی با ما در ارتباط باشید.</p>
+            </div>
+            
+            <button id="closeModal" class="w-full bg-primary text-white py-2 rounded-button hover:bg-blue-800 transition duration-300 !rounded-button">بستن</button>
+        </div>
+    </div>
+
+    <script id="heroSlider">
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            let currentSlide = 0;
+            
+            function showSlide(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('bg-white', 'bg-opacity-100'));
+                dots.forEach(dot => dot.classList.add('bg-white', 'bg-opacity-50'));
+                
+                slides[index].classList.add('active');
+                dots[index].classList.remove('bg-white', 'bg-opacity-50');
+                dots[index].classList.add('bg-white', 'bg-opacity-100');
+                
+                currentSlide = index;
+            }
+            
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+            
+            // Set up automatic slideshow
+            let slideInterval = setInterval(nextSlide, 5000);
+            
+            // Add click event to dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    clearInterval(slideInterval);
+                    showSlide(index);
+                    slideInterval = setInterval(nextSlide, 5000);
+                });
+            });
+        });
+    </script>
+
+    <script id="mobileMenu">
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Close menu when clicking on a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!menuToggle.contains(event.target) && !mobileMenu.contains(event.target)) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+
+    <script id="galleryFilter">
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.gallery-filter');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const filter = button.getAttribute('data-filter');
+                    
+                    // Update active button
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('bg-primary', 'text-white');
+                        btn.classList.add('text-gray-700', 'hover:bg-gray-100');
+                    });
+                    button.classList.add('bg-primary', 'text-white');
+                    button.classList.remove('text-gray-700', 'hover:bg-gray-100');
+                    
+                    // Filter gallery items
+                    galleryItems.forEach(item => {
+                        const category = item.getAttribute('data-category');
+                        if (filter === 'all' || category === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
+    <script id="testimonialSlider">
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.querySelector('.testimonial-track');
+            const items = document.querySelectorAll('.testimonial-item');
+            const prevBtn = document.querySelector('.testimonial-prev');
+            const nextBtn = document.querySelector('.testimonial-next');
+            
+            let position = 0;
+            const itemWidth = 100; // percentage
+            const totalItems = items.length;
+            let visibleItems = 1;
+            
+            function updateVisibleItems() {
+                if (window.innerWidth >= 768) {
+                    visibleItems = 3;
+                } else {
+                    visibleItems = 1;
+                }
+                
+                // Reset position if needed
+                if (position > totalItems - visibleItems) {
+                    position = totalItems - visibleItems;
+                    updateSliderPosition();
+                }
+            }
+            
+            function updateSliderPosition() {
+                const translateValue = position * -itemWidth;
+                track.style.transform = `translateX(${translateValue}%)`;
+            }
+            
+            prevBtn.addEventListener('click', () => {
+                if (position > 0) {
+                    position--;
+                    updateSliderPosition();
+                }
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                if (position < totalItems - visibleItems) {
+                    position++;
+                    updateSliderPosition();
+                }
+            });
+            
+            // Initial setup
+            updateVisibleItems();
+            
+            // Update on resize
+            window.addEventListener('resize', updateVisibleItems);
+        });
+    </script>
+
+    <script id="contactForm">
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            const formResultModal = document.getElementById('formResultModal');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            const closeModal = document.getElementById('closeModal');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Simulate form submission
+                const success = Math.random() > 0.2; // 80% success rate for demo
+                
+                if (success) {
+                    successMessage.classList.remove('hidden');
+                    errorMessage.classList.add('hidden');
+                } else {
+                    successMessage.classList.add('hidden');
+                    errorMessage.classList.remove('hidden');
+                }
+                
+                formResultModal.classList.remove('hidden');
+                
+                // Reset form
+                contactForm.reset();
+            });
+            
+            closeModal.addEventListener('click', function() {
+                formResultModal.classList.add('hidden');
+            });
+            
+            // Close modal when clicking outside
+            formResultModal.addEventListener('click', function(e) {
+                if (e.target === formResultModal) {
+                    formResultModal.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+
+    <script id="scrollToTopButton">
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.classList.remove('opacity-0', 'invisible');
+                    scrollToTopBtn.classList.add('opacity-100', 'visible');
+                } else {
+                    scrollToTopBtn.classList.remove('opacity-100', 'visible');
+                    scrollToTopBtn.classList.add('opacity-0', 'invisible');
+                }
+            });
+            
+            scrollToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+    <script id="smoothScroll">
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerOffset = 80;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script id="animateOnScroll">
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            
+            function checkIfInView() {
+                animatedElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    const delay = element.getAttribute('data-delay') || 0;
+                    
+                    if (elementTop < windowHeight * 0.85) {
+                        setTimeout(() => {
+                            element.classList.add('visible');
+                        }, delay);
+                    }
+                });
+            }
+            
+            // Check on load
+            checkIfInView();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkIfInView);
+        });
+    </script>
+</body>
+</html>
